@@ -37,8 +37,10 @@ model-viewer {
 <script>
   window.addEventListener("load", () => {
     var modelViewer = document.querySelector('model-viewer');
-    var path = window.location.pathname.substr(1);
-    modelViewer.setAttribute('src', "https://editions-living-models-c982734.s3.ap-southeast-1.amazonaws.com/" + path + ".glb");
+    var params = window.location.search;
+    const searchParams = new URLSearchParams(params);
+    var sofa = searchParams.get("sofa")
+    modelViewer.setAttribute('src', "https://editions-living-models-c982734.s3.ap-southeast-1.amazonaws.com/" + sofa + ".glb");
     console.log("Can activate AR: " + modelViewer.canActivateAR);
     modelViewer.activateAR();
   });
